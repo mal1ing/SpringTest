@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+  <!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.ghfkd1235.spring.ex.real_estate.dao.Real_EstateDAO">
+  	<select id="selectReal_Estate" parameterType="int" 
+  	resultType="com.ghfkd1235.spring.ex.real_estate.model.Real_Estate" >
+  		SELECT
+  			`id`
+  			, `realtorId`
+  			, `address`
+  			, `area`
+  			, `type`
+  			, `price`
+  			, `rentPrice`
+  			, `createdAt`
+  			, `updatedAt`
+  		FROM
+  			`Real_Estate`
+  		WHERE
+  			`id` = #{id}
+  	</select>
+  	
+  	<select id="selectRentPrice" parameterType="int"
+  	resultType="com.ghfkd1235.spring.ex.real_estate.model.Real_Estate">
+  		SELECT
+  			`id`
+  			, `realtorId`
+  			, `address`
+  			, `area`
+  			, `type`
+  			, `price`
+  			, `rentPrice`
+  			, `createdAt`
+  			, `updatedAt`
+  		FROM
+  			`Real_Estate`
+  		WHERE
+  			`rentPrice` <![CDATA[ < ]]>  #{rentPrice}
+  			
+  	</select>
+  	
+  	  	<select id="selectAreaPrice" parameterType="int"
+  	resultType="com.ghfkd1235.spring.ex.real_estate.model.Real_Estate">
+  		SELECT
+  			`id`
+  			, `realtorId`
+  			, `address`
+  			, `area`
+  			, `type`
+  			, `price`
+  			, `rentPrice`
+  			, `createdAt`
+  			, `updatedAt`
+  		FROM
+  			`Real_Estate`
+  		WHERE
+	  	<![CDATA[ 
+	  		`type` = '매매'
+	  		AND `area` >= #{area}
+	  		AND `price` <= #{price}		
+	  	]]>
+	  
+  			
+  	</select>
+  
+  
+  </mapper>
